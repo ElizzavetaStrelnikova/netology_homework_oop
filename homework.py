@@ -3,6 +3,7 @@ import math
 
 
 class Student:
+
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -36,7 +37,6 @@ class Student:
         else:
             return None
 
-
     def __str__(self):
         res = (f'\nСтудент\nИмя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: '
                f'{self._middle_grades_student()}\nКурсы в процессе '
@@ -50,9 +50,10 @@ class Student:
         elif self._middle_grades_student() > other._middle_grades_student():
                 return self.name + ' ' + self.surname
         return other.name + ' ' + other.surname
-        # return self._middle_grades_student() > other._middle_grades_student()
+
 
 class Mentor:
+
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
@@ -95,7 +96,6 @@ class Lecturer(Mentor):
             return round(sum(self.grades[course]) / len(self.grades[course]), 2)
         else:
             return None
-    
 
     def __str__(self):
         res = f'\nЛектор\nИмя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self._middle_grades_lecturer()}'

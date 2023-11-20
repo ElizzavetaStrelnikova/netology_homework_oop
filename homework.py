@@ -47,10 +47,28 @@ class Student:
         if not isinstance(other, Student):
             print('Это не студент!')
             return
-        elif self._middle_grades_student() > other._middle_grades_student():
-                return self.name + ' ' + self.surname
-        return other.name + ' ' + other.surname
+        elif self._middle_grades_student() < other._middle_grades_student():
+            return True
+        else:
+            return False
 
+    def __eq__(self, other):
+        if not isinstance(other, Student):
+            print('Это не студент!')
+            return
+        elif self._middle_grades_student() == other._middle_grades_student():
+            return True
+        else:
+            return False
+
+    def __gt__(self, other):
+        if not isinstance(other, Student):
+            print('Это не студент!')
+            return
+        elif self._middle_grades_student() > other._middle_grades_student():
+            return True
+        else:
+            return False
 
 class Mentor:
 
@@ -105,10 +123,28 @@ class Lecturer(Mentor):
         if not isinstance(other, Lecturer):
             print('Это не лектор!')
             return
-        elif self._middle_grades_lecturer() > other._middle_grades_lecturer():
-            return self.name + ' ' + self.surname
-        return other.name + ' ' + other.surname
+        elif self._middle_grades_lecturer() < other._middle_grades_lecturer():
+            return True
+        else:
+            return False
 
+    def __eq__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Это не лектор!')
+            return
+        elif self._middle_grades_lecturer() == other._middle_grades_lecturer():
+            return True
+        else:
+            return False
+
+    def __gt__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Это не лектор!')
+            return
+        elif self._middle_grades_lecturer() > other._middle_grades_lecturer():
+            return True
+        else:
+            return False
 
 def get_average_grade_by_course(person_list, course):
     """
@@ -153,22 +189,36 @@ second_lecturer.grades['C++'] = [5,4,5]
 
 one_student.rate_lecturer(one_lecturer, 'Python', 5)
 one_student._middle_grades_student()
-who_is_smarter = one_student.__lt__(second_student)
+is_smaller_student = one_student.__lt__(second_student)
+is_equal_student = one_student.__eq__(second_student)
+is_bigger_student = one_student.__gt__(second_student)
+
 
 one_reviewer.rate_hw(one_student, 'Python', 5)
 
-who_is_better_lecturer = one_lecturer.__lt__(second_lecturer)
+is_smaller_lecturer = one_lecturer.__lt__(second_lecturer)
+is_equal_lecturer = one_lecturer.__eq__(second_lecturer)
+is_bigger_lecturer = one_lecturer.__gt__(second_lecturer)
 
 avg_grade_stud_python = get_average_grade_by_course([one_student, second_student], 'Python')
 avg_grade_lec_python = get_average_grade_by_course([one_lecturer, second_lecturer], 'Python')
 
-print(one_lecturer.grades)
+# print(one_lecturer.grades)
 print(one_student)
-print(who_is_smarter)
-print(one_student.grades)
+
+print(is_smaller_student)
+print(is_equal_student)
+print(is_bigger_student)
+# print(one_student.grades)
+
 print(one_reviewer)
+
 print(one_lecturer)
-print(who_is_better_lecturer)
+
+print(is_smaller_lecturer)
+print(is_equal_lecturer)
+print(is_bigger_lecturer)
+
 print('средняя оценка студентов по питону:' + str(avg_grade_stud_python))
 print('средняя оценка преподов по питону:' + str(avg_grade_lec_python))
 
